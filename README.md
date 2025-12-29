@@ -1,32 +1,252 @@
-# sqlc-example-api
 
-This repository provides starter code for creating a API using sqlc and the Gin web framework in Go. This is part of the Relational Database course as part of the Iknite Space training.
+---
+
+📝 Todo API (Go + PostgreSQL + sqlc)
+
+A simple yet production-style Todo REST API built with Go, PostgreSQL, sqlc, and Docker.
+
+> 🚀 This project was developed and tested using GitHub Codespaces to ensure a fully cloud-based, reproducible development environment.
 
 
-Project Structure
 
-* `api/`: Contains API route definitions and handler functions. You will need to edit this file, if you want to add or modify the apit endpoints.
-* `cmd/api/`: Houses the main application entry point. You shouldn't need to edit any files in this directory.
-* `db/migrations`: Contains sql files that create/update the database schema (tables and columns) used by the api. If you need to update the database schema make your changes here.
-* `db/query`: This folder contains SQL query files. These files define the database queries used by the application, which are processed by sqlc to generate type-safe Go code for interacting with the database.
-`db/repo/`: This directory contains repository code that acts as an abstraction layer between the database and the application logic. It provides functions to interact with the database using the generated sqlc code. You shouldn't need to edit any files in this directory.
 
-# Getting Started
-* Fork the repository into your own github account.
-* Clone the Repository:
-`git clone https://github.com/YOUR-GITHUB-USERNAME/sqlc-example-api.git`
-cd sqlc-example-api
-* Set Up Environment Variables:
-    * Create a new database for use with this project.
-    * Copy the .env.example file to .env and configure the necessary environment variables, such as database connection details.
-* Install Dependencies:
-    * Ensure you have Go installed. Then, install the required Go modules:
-    `go mod tidy`
-* Generate Code with sqlc:
-    * If you make any changes to `db/query` or `db/migrations`, then you need to re-generate the go code in `db/repo`
-            `go generate ./...`
-    * This command will generate Go code based on the SQL queries defined in the db/queries/ directory.
-* Run the Application:
-    `go run cmd/api/...`
+---
 
-    The server will start, and it will print the available endpoints.
+✨ Features
+
+CRUD operations for Todos
+
+PostgreSQL persistence
+
+Type-safe SQL using sqlc
+
+Dockerized database
+
+Clean Go project structure
+
+Ready for extension (auth, pagination, users)
+
+
+
+---
+
+🛠 Tech Stack
+
+Go 1.22
+
+PostgreSQL
+
+sqlc
+
+Docker & docker-compose
+
+GitHub Codespaces
+
+
+
+---
+
+📁 Project Structure
+
+todo-app/
+├── cmd/server/            # Application entry point
+│   ├── main.go
+│   └── mod.go
+├── internal/
+│   ├── handlers/          # HTTP handlers
+│   └── db/sqlc/           # sqlc generated code
+├── db/
+│   └── queries.sql        # SQL queries
+├── migrations/            # Database migrations
+├── docker-compose.yml
+├── sqlc.yaml
+├── .env.example
+├── go.mod
+└── README.md
+
+
+---
+
+🚀 Running the Project (GitHub Codespaces)
+
+1️⃣ Open in GitHub Codespaces
+
+Click Code → Codespaces → Create codespace
+
+Wait for the environment to finish initializing
+
+Open the terminal
+
+
+> 💡 Codespaces provides Docker and Go pre-installed.
+
+
+
+
+---
+
+2️⃣ Install PostgreSQL client (psql)
+
+sudo apt update
+sudo apt install postgresql-client -y
+
+Verify:
+
+psql --version
+
+
+---
+
+3️⃣ Start PostgreSQL (Docker)
+
+docker-compose up -d
+
+Confirm:
+
+docker ps
+
+
+---
+
+4️⃣ Apply database migrations
+
+psql postgres://postgres:postgres@localhost:5432/todoapp \
+  -f migrations/0001_init.up.sql
+
+
+  ---
+
+  5️⃣ Generate sqlc code
+
+  sqlc generate
+
+
+  ---
+
+  6️⃣ Install Go dependencies automatically
+
+  go mod tidy
+
+
+  ---
+
+  7️⃣ Run the API server
+
+  go run ./cmd/server
+
+  Server starts on:
+
+  http://localhost:8080
+
+
+  ---
+
+  🔌 API Endpoints
+
+  Create a Todo
+
+  POST /todos
+
+  {
+      "title": "Learn sqlc"
+  }
+
+
+  ---
+
+  List Todos
+
+  GET /todos
+
+
+  ---
+
+  Get Todo by ID
+
+  GET /todos/{id}
+
+
+  ---
+
+  Update Todo
+
+  PATCH /todos/{id}
+
+  {
+      "completed": true
+  }
+
+
+  ---
+
+  Delete Todo
+
+  DELETE /todos/{id}
+
+
+  ---
+
+  🧪 Quick Test (curl)
+
+  curl -X POST http://localhost:8080/todos \
+    -H "Content-Type: application/json" \
+      -d '{"title":"First Todo"}'
+
+
+      ---
+
+      🧠 Notes
+
+      Environment variables are defined in .env.example
+
+      PostgreSQL runs in Docker
+
+      Dependencies are managed automatically via Go modules
+
+      sqlc ensures compile-time SQL correctness
+
+
+
+      ---
+
+      ✅ Project Status
+
+      ✔ Completed
+      ✔ Fully functional
+      ✔ GitHub Codespaces compatible
+      ✔ Ready for extension and production hardening
+
+
+      ---
+
+      📌 Possible Improvements
+
+      User authentication (JWT)
+
+      Pagination & filtering
+
+      Automated migrations
+
+      Unit & integration tests
+
+      CI/CD pipeline
+
+      Deployment to Fly.io / Render
+
+
+
+      ---
+
+      📄 License
+
+      MIT License
+
+
+      ---
+
+
+  
+
+  
+
+ 
