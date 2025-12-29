@@ -1,6 +1,3 @@
-Below is a clean, professional README.md you can drop directly into your repository.
-It clearly explains setup, running, and usage, and explicitly states that the project is built and run using GitHub Codespaces.
-
 
 ---
 
@@ -247,20 +244,8 @@ psql postgres://postgres:postgres@localhost:5432/todoapp \
 
       ---
 
-      If you want, I can also:
 
-      Add OpenAPI docs
-
-      Create a Makefile
-
-
-   d et
-
-     ddatetcto
-
-
-    Jtyx
-
+  
 
   
 
