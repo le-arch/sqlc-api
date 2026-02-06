@@ -1,30 +1,28 @@
 
 ---
 
-📝 Todo API (Go + PostgreSQL + sqlc)
+# 📝 Todo API (Go + PostgreSQL + sqlc)
 
 A simple yet production-style Todo REST API built with Go, PostgreSQL, sqlc, and Docker.
 
 > 🚀 This project was developed and tested using GitHub Codespaces to ensure a fully cloud-based, reproducible development environment.
 
 
-
-
 ---
 
 ✨ Features
 
-CRUD operations for Todos
++ CRUD operations for Todos
 
-PostgreSQL persistence
++ PostgreSQL persistence
 
-Type-safe SQL using sqlc
++ Type-safe SQL using sqlc
 
-Dockerized database
++ Dockerized database
 
-Clean Go project structure
++ Clean Go project structure
 
-Ready for extension (auth, pagination, users)
++ Ready for extension (auth, pagination, users)
 
 
 
@@ -32,22 +30,22 @@ Ready for extension (auth, pagination, users)
 
 🛠 Tech Stack
 
-Go 1.22
+- Go 1.22
 
-PostgreSQL
+- PostgreSQL
 
-sqlc
+- sqlc
 
-Docker & docker-compose
+- Docker & docker-compose
 
-GitHub Codespaces
+- GitHub Codespaces
 
 
 
 ---
 
 📁 Project Structure
-
+```
 todo-app/
 ├── cmd/server/            # Application entry point
 │   ├── main.go
@@ -64,7 +62,7 @@ todo-app/
 ├── go.mod
 └── README.md
 
-
+```
 ---
 
 🚀 Running the Project (GitHub Codespaces)
@@ -86,71 +84,71 @@ Open the terminal
 ---
 
 2️⃣ Install PostgreSQL client (psql)
-
+``
 sudo apt update
 sudo apt install postgresql-client -y
-
+``
 Verify:
-
+```
 psql --version
-
+```
 
 ---
 
 3️⃣ Start PostgreSQL (Docker)
-
+```
 docker-compose up -d
-
+```
 Confirm:
-
+```
 docker ps
-
+```
 
 ---
 
 4️⃣ Apply database migrations
-
+```
 psql postgres://postgres:postgres@localhost:5432/todoapp \
   -f migrations/0001_init.up.sql
-
+```
 
   ---
 
   5️⃣ Generate sqlc code
-
+```
   sqlc generate
-
+```
 
   ---
 
   6️⃣ Install Go dependencies automatically
-
+```
   go mod tidy
-
+```
 
   ---
 
   7️⃣ Run the API server
-
+```
   go run ./cmd/server
-
+```
   Server starts on:
-
+```
   http://localhost:8080
-
+```
 
   ---
 
   🔌 API Endpoints
 
   Create a Todo
-
+```
   POST /todos
 
   {
       "title": "Learn sqlc"
   }
-
+```
 
   ---
 
@@ -162,38 +160,37 @@ psql postgres://postgres:postgres@localhost:5432/todoapp \
   ---
 
   Get Todo by ID
-
+```
   GET /todos/{id}
 
-
+```
   ---
 
   Update Todo
-
+```
   PATCH /todos/{id}
 
   {
       "completed": true
   }
-
+```
 
   ---
 
   Delete Todo
-
+```
   DELETE /todos/{id}
-
-
-  ---
+```
+---
 
   🧪 Quick Test (curl)
-
+```
   curl -X POST http://localhost:8080/todos \
     -H "Content-Type: application/json" \
       -d '{"title":"First Todo"}'
+```
 
-
-      ---
+ ---     
 
       🧠 Notes
 
@@ -207,7 +204,6 @@ psql postgres://postgres:postgres@localhost:5432/todoapp \
 
 
 
-      ---
 
       ✅ Project Status
 
@@ -217,7 +213,6 @@ psql postgres://postgres:postgres@localhost:5432/todoapp \
       ✔ Ready for extension and production hardening
 
 
-      ---
 
       📌 Possible Improvements
 
@@ -235,14 +230,8 @@ psql postgres://postgres:postgres@localhost:5432/todoapp \
 
 
 
-      ---
 
-      📄 License
-
-      MIT License
-
-
-      ---
+     
 
 
   
